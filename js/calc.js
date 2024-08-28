@@ -205,13 +205,17 @@ function getResult(numbers, prevValue) {
             }
         }
     }, firstNumber);
-    if (!Number.isInteger(result)) {
-        result = Math.round(result * 100) / 100;
-    }
+    // 계산 후 처리
     processResult(result);
 }
 // 계산 이후 처리
 function processResult(result) {
+
+    // 결과값 소수점 처리
+    if (!Number.isInteger(result)) {
+        result = Math.round(result * 100) / 100;
+    }
+
     input.value = result;
     inputList = [];
 }
