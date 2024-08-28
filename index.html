@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='ko'>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>계산기</title>
+    <!-- css -->
+    <link rel='stylesheet' href='css/style.css'>
+    <!-- script -->
+    <script defer src="js/calc.js"></script>
+    <!-- <script defer src="js/calculator.js"></script> -->
+
+    <!-- fontawesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <article id="calc">
+        <ul id="gnb">
+            <li id="close-btn">
+                <i class="fa-solid fa-xmark fa-xs"></i>
+            </li>
+            <li id="down-btn">
+                <i class="fa-solid fa-minus fa-xs"></i>
+            </li>
+            <li id="expand-btn">
+                <i class="fa-solid fa-plus fa-xs"></i>
+            </li>
+        </ul>
+        <div class="calc-input">
+            <input type="text" id="result-value" value="0" readonly />
+        </div>
+        <div id="grid-container">
+            <button class="grid-item" id="ac"><span>AC</span></button>
+            <button class="grid-item" id="abs"><span>+/-</span></button>
+            <button class="grid-item" id="percent"><span>%</span></button>
+            <button class="grid-item" id="divide"><span>÷</span></button>
+            <button class="grid-item num-item" id="seven"><span>7</span></button>
+            <button class="grid-item num-item" id="eight"><span>8</span></button>
+            <button class="grid-item num-item" id="nine"><span>9</span></button>
+            <button class="grid-item" id="multiply"><span>x</span></button>
+            <button class="grid-item num-item" id="four"><span>4</span></button>
+            <button class="grid-item num-item" id="five"><span>5</span></button>
+            <button class="grid-item num-item" id="six"><span>6</span></button>
+            <button class="grid-item" id="minus"><span>-</span></button>
+            <button class="grid-item num-item" id="one"><span>1</span></button>
+            <button class="grid-item num-item" id="two"><span>2</span></button>
+            <button class="grid-item num-item" id="three"><span>3</span></button>
+            <button class="grid-item" id="plus"><span>+</span></button>
+            <button class="grid-item num-item" id="zero"><span>0</span></button>
+            <button class="grid-item" id="decimal-point"><span>.</span></button>
+            <button class="grid-item" id="equal"><span>=</span></button>
+        </div>
+    </article>
+</body>
+
+</html>
