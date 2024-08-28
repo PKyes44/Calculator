@@ -43,75 +43,19 @@ decimalPointBtn.addEventListener('click', (e) => {
 })
 // 덧셈 클릭 이벤트
 plusBtn.addEventListener('click', (e) => {
-    // 중복 클릭 예외처리
-    if (prevInput === '+') {
-        return;
-    }
-
-    // 부호 중복입력 확인 후 업데이트
-    const isDuplicateSign = updateSign('+');
-    if (isDuplicateSign) {
-        return;
-    }
-
-    // 이전 숫자값 저장 및 부호 저장
-    addPrevAtList(input.value, '+');
-    // 입력키 저장
-    prevInput = '+';
+    processSign('+');
 })
 // 뺄셈 클릭 이벤트
 minusBtn.addEventListener('click', (e) => {
-    // 중복 클릭 예외처리
-    if (prevInput === '-') {
-        return;
-    }
-
-    // 부호 중복입력 확인 후 업데이트
-    const isDuplicateSign = updateSign('-');
-    if (isDuplicateSign) {
-        return;
-    }
-
-    // 이전 숫자값 저장 및 부호 저장
-    addPrevAtList(input.value, '-');
-    // 입력키 저장
-    prevInput = '-';
+    processSign('-');
 })
 // 곱셈 클릭 이벤트
 multiplyBtn.addEventListener('click', (e) => {
-    // 중복 클릭 예외처리
-    if (prevInput === '*') {
-        return;
-    }
-
-    // 부호 중복입력 확인 후 업데이트
-    const isDuplicateSign = updateSign('*');
-    if (isDuplicateSign) {
-        return;
-    }
-
-    // 이전 숫자값 저장 및 부호 저장
-    addPrevAtList(input.value, '*');
-    // 입력키 저장
-    prevInput = '*';
+    processSign('*');
 })
 // 나눗셈 클릭 이벤트
 divideBtn.addEventListener('click', (e) => {
-    // 중복 클릭 예외처리
-    if (prevInput === '/') {
-        return;
-    }
-
-    // 부호 중복입력 확인 후 업데이트
-    const isDuplicateSign = updateSign('/');
-    if (isDuplicateSign) {
-        return;
-    }
-
-    // 이전 숫자값 저장 및 부호 저장
-    addPrevAtList(input.value, '/');
-    // 입력키 저장
-    prevInput = '/';
+    processSign('/');
 })
 // 계산 클릭 이벤트
 equalBtn.addEventListener('click', (e) => {
@@ -171,13 +115,22 @@ function addPrevAtList(inputValue, sign) {
     return inputList;
 }
 // 부호 중복 입력시 이전 부호 제거
-function updateSign(sign) {
-    prevInput = sign;
+function checkDuplicateSign(sign) {
+    // 중복 클릭 예외처리
+    if (prevInput === '+') {
+        return true;
+    }
+
+    // 마지막 입력이 부호가 맞을 경우 실행
     if (signList.includes(inputList[inputList.length - 1])) {
-        inputList[inputList.length - 1] = sign;
+        updateDuplicatedSign(sign);
         return true;
     }
     return false;
+}
+function updateDuplicatedSign(sign) {
+    prevInput = sign;
+    inputList[inputList.length - 1] = sign;
 }
 // 결과값 계산
 function getResult(numbers, prevValue) {
@@ -218,4 +171,14 @@ function processResult(result) {
 
     input.value = result;
     inputList = [];
+}
+function processSign(sign) {
+    // 부호 중복입력 확인
+    const isDuplicateSign = checkDuplicateSign(sign);
+    if (isDuplicateSign) return;
+
+    // 이전 숫자값 저장 및 부호 저장
+    addPrevAtList(input.value, sign);
+    // 입력키 저장
+    prevInput = sign;
 }
